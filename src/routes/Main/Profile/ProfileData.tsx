@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from 'styled-components'
+import { ReactNode } from 'react'
 
 const Container = styled('div')`
   display: flex;
@@ -40,18 +41,18 @@ const AgeAndEyeColorDataContainer = styled('div')`
 `
 
 interface Props {
-    name: string | undefined,
-    birthYear: string | undefined,
-    eyeColor: string | undefined,
+  name: string | undefined
+  birthYear: string | undefined
+  eyeColor: string | undefined
 }
 
-export default function ProfileData(props: Props) {
-    return (
+export default function ProfileData (props: Props): ReactNode {
+  return (
         <Container>
-            <div style={{display: 'flex', marginTop: '26px'}}>
-                <Name>{typeof props.name !== "undefined" ? props.name : 'Nie znaleziono'}</Name>
+            <div style={{ display: 'flex', marginTop: '26px' }}>
+                <Name>{typeof props.name !== 'undefined' ? props.name : 'Nie znaleziono'}</Name>
                 <SvgContainer>
-                    <img style={{marginRight: '14px'}}
+                    <img style={{ marginRight: '14px' }}
                          src={require('../../../assets/images/svg/humanSvg.svg').default}
                          alt={'human'}/>
 
@@ -60,21 +61,21 @@ export default function ProfileData(props: Props) {
                 </SvgContainer>
             </div>
             <AgeAndEyeColorDataContainer>
-                <div style={{display: 'flex'}}>
+                <div style={{ display: 'flex' }}>
                     <DataLabel>birth year:</DataLabel>
                     <div style={{
-                        fontSize: '20px',
-                        marginLeft: '5px'
-                    }}>{typeof props.birthYear !== "undefined" ? props.birthYear : 'Nie znaleziono'}</div>
+                      fontSize: '20px',
+                      marginLeft: '5px'
+                    }}>{typeof props.birthYear !== 'undefined' ? props.birthYear : 'Nie znaleziono'}</div>
                 </div>
-                <div style={{display: 'flex'}}>
+                <div style={{ display: 'flex' }}>
                     <DataLabel>eye color:</DataLabel>
                     <div style={{
-                        fontSize: '20px',
-                        marginLeft: '5px'
-                    }}>{typeof props.eyeColor !== "undefined" ? props.eyeColor : 'Nie znaleziono'}</div>
+                      fontSize: '20px',
+                      marginLeft: '5px'
+                    }}>{typeof props.eyeColor !== 'undefined' ? props.eyeColor : 'Nie znaleziono'}</div>
                 </div>
             </AgeAndEyeColorDataContainer>
         </Container>
-    )
+  )
 }

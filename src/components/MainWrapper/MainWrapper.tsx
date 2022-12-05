@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import React from "react";
+import styled from 'styled-components'
+import React, { ReactNode } from 'react'
 
 const Wrapper = styled('div')`
   max-width: 1130px;
@@ -16,10 +16,10 @@ const Wrapper = styled('div')`
   }
 `
 
-export default function MainWrapper(props: React.PropsWithChildren) {
-    return (
+export default function MainWrapper (props: React.PropsWithChildren): ReactNode {
+  return (
         <Wrapper>
             {props.children}
         </Wrapper>
-    )
+  )
 }

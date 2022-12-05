@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { ReactNode } from 'react'
 
 const Button = styled('button')`
   border: none;
@@ -25,14 +26,14 @@ const Button = styled('button')`
 `
 
 interface Props {
-    onClick: () => void,
-    text: string,
+  onClick: () => void
+  text: string
 }
 
-export default function FetchButton(props: Props) {
-    return (
+export default function FetchButton (props: Props): ReactNode {
+  return (
         <Button onClick={props.onClick}>
             {props.text}
         </Button>
-    )
+  )
 }

@@ -1,9 +1,10 @@
-import styled from "styled-components";
-import {useFormik} from "formik";
-import {registrationSchema} from "../../../../schemas/registrationSchema";
-import './form.css';
-import {RegistrationFormDataInterface} from "../../../../interfaces/RegistrationFormDataInterface";
-import {StarWarsDataType} from "../../../../types/StarWarsDataType";
+import styled from 'styled-components'
+import { useFormik } from 'formik'
+import { registrationSchema } from '../../../../schemas/registrationSchema'
+import './form.css'
+import { RegistrationFormDataInterface } from '../../../../interfaces/RegistrationFormDataInterface'
+import { StarWarsDataType } from '../../../../types/StarWarsDataType'
+import { ReactNode } from 'react'
 
 const CustomInput = styled('input')`
   width: 100%;
@@ -58,48 +59,48 @@ const CheckboxError = styled('span')`
 `
 
 interface Props {
-    star_wars_data: StarWarsDataType,
+  star_wars_data: StarWarsDataType
 }
 
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    return response.json();
+async function postData (url = '', data = {}): Promise<void> {
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  return await response.json()
 }
 
-export default function Form(props: Props) {
-    const onSubmit = async (values: RegistrationFormDataInterface) => {
-        const data = [{...values}, {...props}];
-        await postData('https://swapi.dev/api/people/1/', data);
-    }
+export default function Form (props: Props): ReactNode {
+  const onSubmit = async (values: RegistrationFormDataInterface): Promise<void> => {
+    const data = [{ ...values }, { ...props }]
+    await postData('https://swapi.dev/api/people/1/', data)
+  }
 
-    const {
-        values,
-        touched,
-        errors,
-        handleBlur,
-        handleChange,
-        handleSubmit,
-        isSubmitting,
-    } = useFormik({
-        initialValues: {
-            login: '',
-            password: '',
-            email: '',
-            phoneNumber: '',
-            rules: false,
-        },
-        validationSchema: registrationSchema,
-        onSubmit,
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isSubmitting
+  } = useFormik({
+    initialValues: {
+      login: '',
+      password: '',
+      email: '',
+      phoneNumber: '',
+      rules: false
+    },
+    validationSchema: registrationSchema,
+    onSubmit
+  })
 
-    return (
-        <form style={{marginTop: '55px'}} autoComplete={'off'} onSubmit={handleSubmit}>
+  return (
+        <form style={{ marginTop: '55px' }} autoComplete={'off'} onSubmit={handleSubmit}>
             <label>
                 Login:
                 <CustomInput
@@ -109,11 +110,11 @@ export default function Form(props: Props) {
                     name={'login'}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={errors.login && touched.login ? 'inputError' : ''}
+                    className={((errors?.login) != null) && (touched.login === true) ? 'inputError' : ''}
                 />
                 <ErrorMessageInput
-                    className={errors.login && touched.login ? '' : 'hidden'}>
-                    {errors.login ? errors.login : 'dummy'}
+                    className={(errors.login != null) && (touched.login === true) ? '' : 'hidden'}>
+                    {(errors.login != null) ? errors.login : 'dummy'}
                 </ErrorMessageInput>
             </label>
             <label>
@@ -125,11 +126,11 @@ export default function Form(props: Props) {
                     name={'password'}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={errors.password && touched.password ? 'inputError' : ''}
+                    className={(errors.password != null) && (touched.password === true) ? 'inputError' : ''}
                 />
                 <ErrorMessageInput
-                    className={errors.password && touched.password ? '' : 'hidden'}>
-                    {errors.password ? errors.password : 'dummy'}
+                    className={(errors.password != null) && (touched.password === true) ? '' : 'hidden'}>
+                    {(errors.password != null) ? errors.password : 'dummy'}
                 </ErrorMessageInput>
             </label>
             <label>
@@ -141,11 +142,11 @@ export default function Form(props: Props) {
                     name={'email'}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={errors.email && touched.email ? 'inputError' : ''}
+                    className={(errors.email != null) && (touched.email === true) ? 'inputError' : ''}
                 />
                 <ErrorMessageInput
-                    className={errors.email && touched.email ? '' : 'hidden'}>
-                    {errors.email ? errors.email : 'dummy'}
+                    className={(errors.email != null) && (touched.email === true) ? '' : 'hidden'}>
+                    {(errors.email != null) ? errors.email : 'dummy'}
                 </ErrorMessageInput>
             </label>
             <label>
@@ -157,14 +158,14 @@ export default function Form(props: Props) {
                     name={'phoneNumber'}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={errors.phoneNumber && touched.phoneNumber ? 'inputError' : ''}
+                    className={(errors.phoneNumber != null) && (touched.phoneNumber === true) ? 'inputError' : ''}
                 />
                 <ErrorMessageInput
-                    className={errors.phoneNumber && touched.phoneNumber ? '' : 'hidden'}>
-                    {errors.phoneNumber ? errors.phoneNumber : 'dummy'}
+                    className={(errors.phoneNumber != null) && (touched.phoneNumber === true) ? '' : 'hidden'}>
+                    {(errors.phoneNumber != null) ? errors.phoneNumber : 'dummy'}
                 </ErrorMessageInput>
             </label>
-            <label style={{marginTop: '15px'}} className="checkboxContainer">Akceptuję regulamin
+            <label style={{ marginTop: '15px' }} className="checkboxContainer">Akceptuję regulamin
                 <input
                     type="checkbox"
                     checked={values.rules}
@@ -173,14 +174,14 @@ export default function Form(props: Props) {
                     onChange={handleChange}
                     onBlur={handleBlur}
                 />
-                <span className={errors.rules && touched.rules ? 'checkboxError checkmark' : 'checkmark'}></span>
-                <CheckboxError>{errors.rules ? errors.rules : ''}</CheckboxError>
+                <span className={(errors.rules != null) && (touched.rules === true) ? 'checkboxError checkmark' : 'checkmark'}></span>
+                <CheckboxError>{(errors.rules != null) ? errors.rules : ''}</CheckboxError>
             </label>
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: '27px'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '27px' }}>
                 <SubmitButton type={'submit'} disabled={isSubmitting}>
                     zapisz
                 </SubmitButton>
             </div>
         </form>
-    )
+  )
 }

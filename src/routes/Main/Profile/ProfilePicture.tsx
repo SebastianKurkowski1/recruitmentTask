@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { ReactNode } from 'react'
 
 const Container = styled('div')`
   max-width: 534px;
@@ -19,14 +20,13 @@ const Image = styled('img')`
   }
 `
 interface Props {
-    imageUrl: string,
+  imageUrl: string
 }
 
-export default function ProfilePicture(props: Props) {
-
-    return (
+export default function ProfilePicture (props: Props): ReactNode {
+  return (
         <Container>
-           <Image src={props.imageUrl}  alt={'test'}/>
+           <Image src={props.imageUrl} alt={'test'}/>
         </Container>
-    )
+  )
 }

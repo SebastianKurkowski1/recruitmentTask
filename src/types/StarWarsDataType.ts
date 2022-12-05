@@ -1,3 +1,3 @@
-import {PersonInterface} from "../interfaces/PersonInterface";
+import { PersonInterface } from '../interfaces/PersonInterface'
 
-export type StarWarsDataType = Pick<PersonInterface, 'name' | 'created' | 'vehicles'>[];
+export type StarWarsDataType = Array<Pick<PersonInterface, 'name' | 'created' | 'vehicles'>>

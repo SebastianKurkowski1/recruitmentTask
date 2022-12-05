@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import Form from "./Form/Form";
-import {StarWarsDataType} from "../../../types/StarWarsDataType";
+import styled from 'styled-components'
+import Form from './Form/Form'
+import { StarWarsDataType } from '../../../types/StarWarsDataType'
+import { ReactNode } from 'react'
 
 const FormContainer = styled('div')`
   margin: 101px 174px 0 203px;
@@ -32,14 +33,14 @@ const FormTitle = styled('span')`
 `
 
 interface Props {
-    star_wars_data: StarWarsDataType;
+  star_wars_data: StarWarsDataType
 }
 
-export default function Register(props: Props) {
-    return (
+export default function Register (props: Props): ReactNode {
+  return (
         <FormContainer>
             <FormTitle>FORMULARZ REJESTRACYJNY</FormTitle>
             <Form star_wars_data={props.star_wars_data}/>
         </FormContainer>
-    )
+  )
 }

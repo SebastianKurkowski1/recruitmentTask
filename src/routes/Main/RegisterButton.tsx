@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { ReactNode } from 'react'
 
 const Button = styled('button')`
   background-color: #40483A;
@@ -20,16 +21,16 @@ const Button = styled('button')`
   }
 `
 interface Props {
-    text: string,
-    scrollToId: string,
+  text: string
+  scrollToId: string
 }
 
-export default function RegisterButton(props: Props) {
-    const handleOnClick = () => {
-        document.getElementById(props.scrollToId)?.scrollIntoView({behavior: 'smooth'});
-    }
+export default function RegisterButton (props: Props): ReactNode {
+  const handleOnClick = (): void => {
+    document.getElementById(props.scrollToId)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
-    return (
+  return (
         <Button onClick={handleOnClick}>{props.text}</Button>
-    )
+  )
 }
