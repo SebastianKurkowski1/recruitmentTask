@@ -75,7 +75,6 @@ async function postData(url = '', data = {}) {
 export default function Form(props: Props) {
     const onSubmit = async (values: RegistrationFormDataInterface) => {
         const data = [{...values}, {...props}];
-        console.log(data);
         await postData('https://swapi.dev/api/people/1/', data);
     }
 

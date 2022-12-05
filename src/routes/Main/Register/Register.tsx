@@ -8,6 +8,9 @@ const FormContainer = styled('div')`
   line-height: 33px;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
+  @media only screen and (max-width: 1000px) {
+    margin: 15px;
+  }
 `
 
 const FormTitle = styled('span')`

@@ -12,6 +12,10 @@ const Name = styled('span')`
   font-weight: 800;
   margin: 0 auto;
   text-align: center;
+  @media only screen and (max-width: 1000px) {
+    font-size: 25px;
+    line-height: 30px;
+  }
 `
 
 const SvgContainer = styled('div')`

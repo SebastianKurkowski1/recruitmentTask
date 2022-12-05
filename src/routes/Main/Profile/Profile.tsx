@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import fetchPerson from "../../../utilities/fetchPerson";
 import {PersonInterface} from "../../../interfaces/PersonInterface";
 import getProfilePictureURL from "../../../utilities/fetchProfilePicture";
+import styled from "styled-components";
 
 interface Props {
     personData: PersonInterface | undefined,
@@ -14,6 +15,13 @@ interface Props {
     handlePersonCounter: () => void,
     handleStarWarsData: (profileData: PersonInterface) => void,
 }
+
+const ProfileInnerContainer = styled('div')`
+  padding: 140px 122px 0 144px;
+  @media only screen and (max-width: 1000px) {
+    padding: 20px;
+  }
+`
 
 export default function Profile(props: Props) {
     const dataFetchedRef = useRef(false);
@@ -41,13 +49,13 @@ export default function Profile(props: Props) {
     return (
         <div>
             <ProfileContainer>
-                <div style={{padding: '140px 122px 0 144px'}}>
+                <ProfileInnerContainer>
                     <ProfilePicture imageUrl={imageUrl} />
                     <ProfileData
                         eyeColor={props.personData?.eye_color}
                         name={props.personData?.name}
                         birthYear={props.personData?.birth_year} />
-                </div>
+                </ProfileInnerContainer>
             </ProfileContainer>
             <FetchButton onClick={handleClick} text={'next profiles'}/>
         </div>
