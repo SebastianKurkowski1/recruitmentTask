@@ -1,0 +1,42 @@
+import styled from "styled-components";
+import Form from "./Form/Form";
+import {StarWarsDataType} from "../../../types/StarWarsDataType";
+
+const FormContainer = styled('div')`
+  margin: 101px 174px 0 203px;
+  font-size: 20px;
+  line-height: 33px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+`
+
+const FormTitle = styled('span')`
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  &:after {
+    content: '';
+    max-width: 166px;
+    width: 100%;
+    height: 9px;
+    background-color: #071594;
+    position: absolute;
+    bottom: -30px;
+  }
+`
+
+interface Props {
+    star_wars_data: StarWarsDataType;
+}
+
+export default function Register(props: Props) {
+    return (
+        <FormContainer>
+            <FormTitle>FORMULARZ REJESTRACYJNY</FormTitle>
+            <Form star_wars_data={props.star_wars_data}/>
+        </FormContainer>
+    )
+}
